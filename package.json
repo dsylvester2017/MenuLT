@@ -1,0 +1,43 @@
+{
+  "name": "org.apache.cordova.project",
+  "displayName": "project",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "android": "0.0.8",
+    "cordova-android": "^9.0.0",
+    "cordova-ios": "^6.1.1",
+    "cordova-plugin-geolocation": "^4.0.2",
+    "cordova-plugin-googleplus": "^8.5.1",
+    "cordova-plugin-whitelist": "^1.3.4",
+    "cordova-support-android-plugin": "^1.0.2",
+    "cordova-support-google-services": "^1.4.1",
+    "org.apache.cordova.geolocation": "^0.3.6"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "org.apache.cordova.geolocation": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-universal-links-plugin": {},
+      "cordova-plugin-googleplus": {
+        "PLAY_SERVICES_VERSION": "15.0.1"
+      }
+    },
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {
+    "cordova-universal-links-plugin-fix": "1.2.1"
+  }
+}

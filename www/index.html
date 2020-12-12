@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<HTML>
+
+    <head>        
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1, minimum-​scale=1, maximum-scale=1">
+        <title> MenuIt
+        </title>
+       <!---- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>--->
+     
+       
+</script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf9A85A0554Twap4wgo85Fuuxbb9zgUj0"></script> 
+        <script src="js/home.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/profile.js"></script>
+        <script src="js/restaurants.js"></script>
+        <script src="js/dologin.js"></script>
+        <script src="js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/> 
+        <link rel="stylesheet" type="text/css" href="css/login.css"/>   
+        <link rel="stylesheet" type="text/css" href="css/card.css"/> 
+        <link rel="stylesheet" type="text/css" href="css/profile.css"/> 
+    </head>
+    <body>
+        <template>
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                  <!-- Tabs Titles -->
+                  <h2 class="active" id = "login-tab">Login</h2>
+                  <h2 class="inactive underlineHover" id = "signup-tab">Sign Up </h2>
+              
+                  <!-- Icon -->
+                  <div class="fadeIn first">
+                   <!---- <img src="img/Profile.png" id="icon" alt="User Icon" />
+                  --></div>
+              
+                  <!-- Login Form -->
+                  <div id = "login-form">
+                    <input type="email" id="login-email" class="fadeIn second" name="login" placeholder="Please enter your email...">
+                    <input type="password" id="login-password" class="fadeIn third" name="login" placeholder="******">
+                    <input type="submit" id="login-button" class="fadeIn fourth" value="Log In">
+                   <!---- <input type = "submit" id ="googlebutton" class = "fadeIn" value = "Sign in With Google"> --->
+                  </div>
+                   <!-- Signup Form -->
+                   <div id = "signup-form" class = "hide">
+                    <input type="email" id="signup-email" class="fadeIn second" name="login" placeholder="Please enter your email...">
+                    <input type="password" id="signup-password" class="fadeIn third" name="login" placeholder="Minimum 6 digits long">
+                    <input type="submit" id = "signup-button" class="fadeIn fourth" value="SignUp">
+                  </div>
+
+                  <!-- Remind Passowrd -->
+                  <div id="formFooter">
+
+                    <a class="underlineHover" href="#">Forgot Password?</a>
+                  </div>
+              
+                </div>
+              </div>
+              
+        </template>
+        <template>
+          <h2>Profile Page</h2>
+          <button id = "logout">Sign Out</button>
+          <h4>Favorites</h4>
+          
+         
+        </template>
+             <!-----   <div class = "bottomNav">
+                    <button id ="home"><p id="hometext">Home</p></button>
+                    <button id ="map"><p>Map</p></button>
+                    <button id ="weather"><p>Weather</p></button>
+                    <button id ="currency"><p>Currency</p></button>
+                </div>------>
+                
+                    <div class="gwd-div-cvwq colorfade"><h3 class="gwd-h1-xn22">MenuIt</h3></div>
+                    
+                   
+                    <div id="content">
+                       
+                    </div>
+
+                <div id = "bottomNav" class="bottomNav">
+                    <button id="home" class="gwd-button-1vt1 gwd-button-1j3b colorfade"><img style = "height:50px;width:50px;" src = 'img/Home.png'> <br>Home</button>      
+                    <button id="restaurants" class="gwd-button-1vt1 gwd-button-6ezq colorfade"><img style = "height:50px;width:50px;" src = 'img/Restaurants.png'><br>Find Restaurants</button>
+                    <button id="map" class="gwd-button-1vt1 gwd-button-11te gwd-button-1n02 colorfade"><img style = "height:50px;width:50px;" src = 'img/Map.png'><br>Map</button>
+                    <button id="profile" class="gwd-button-1vt1 gwd-button-11te gwd-button-1f0i colorfade"><img style = "height:50px;width:50px;" src = 'img/Profile.png'><br>Profile</button>
+                </div> 
+
+              
+
+            
+		  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCkADQ3K43ZM1W2OwJZnXjtsXE2VfjSYd8",
+    authDomain: "menuit-cc305.firebaseapp.com",
+    databaseURL: "https://menuit-cc305.firebaseio.com",
+    projectId: "menuit-cc305",
+    storageBucket: "menuit-cc305.appspot.com",
+    messagingSenderId: "185744993452",
+    appId: "1:185744993452:web:9dddffb5ad3e381e3ac309",
+    measurementId: "G-VR8VTCBMRT"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  let auth = firebase.auth();
+  let db = firebase.firestore();
+  
+  db.settings({ timestampsInSnapshots:true })
+  firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+    // This gives you a Google Access Token.
+    // You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+  }
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script src = "js/auth.js"></script>
+<script>
+dologin();
+ $(function() {
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    $("html, body").css({"width":w,"height":h});
+});
+
+</script>
+<script src = "js/fire.js"></script>
+
+
+
+    </body>
+</HTML>
