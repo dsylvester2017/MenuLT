@@ -73,7 +73,7 @@ function removefavorite(yelpid){
             if (doc.data().favorite == yelpid)
             {
                 console.log("attempting delete")
-                doc.ref.delete().then({
+                doc.ref.delete().then(() =>{
                     doprofile()
                 });
                 
